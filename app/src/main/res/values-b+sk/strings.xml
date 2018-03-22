@@ -26,4 +26,9 @@
     <string name="behavior_tab_title">Správanie</string>
     <string name="consequence_tab_title">Dôsledok</string>
 
+    <!-- Child main activity -->
+    <string name="child_main_open_config_button">Konfiguruj ABC formulár</string>
+    <string name="child_main_open_abc_button">ABC formulár</string>
+    <string name="child_main_open_behavior_button">Zbieraj dáta o správaní</string>
+
 </resources>

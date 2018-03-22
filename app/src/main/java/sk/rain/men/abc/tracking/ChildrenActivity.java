@@ -16,11 +16,11 @@ import com.orm.util.SugarCursor;
 import java.util.List;
 
 import sk.rain.men.abc.tracking.adapter.ChildCursorAdapter;
+import sk.rain.men.abc.tracking.child.AbcChildDataTabActivity;
+import sk.rain.men.abc.tracking.child.ChildMainActivity;
 import sk.rain.men.abc.tracking.model.Child;
 
 public class ChildrenActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
-
-    public static final String CHILD_MESSAGE = "sk.abc.CHILD";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +44,11 @@ public class ChildrenActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         SugarCursor cursor = (SugarCursor) adapterView.getItemAtPosition(i);
-
-        Toast.makeText(this, cursor.getString(cursor.getColumnIndex("NAME")), Toast.LENGTH_SHORT).show();
+        Long childId = cursor.getLong(cursor.getColumnIndex("ID"));
+        //Toast.makeText(this, cursor.getString(cursor.getColumnIndex("NAME")), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ChildMainActivity.class);
+        intent.putExtra(MessageKey.CHILD_ID_KEY, childId);
+        startActivity(intent);
     }
 
     @Override
@@ -53,7 +56,7 @@ public class ChildrenActivity extends AppCompatActivity implements AdapterView.O
         SugarCursor cursor = (SugarCursor) adapterView.getItemAtPosition(i);
         Long childId = cursor.getLong(cursor.getColumnIndex("ID"));
         Intent intent = new Intent(this, ChildActivity.class);
-        intent.putExtra(CHILD_MESSAGE, childId);
+        intent.putExtra(MessageKey.CHILD_ID_KEY, childId);
         startActivity(intent);
 
         return true;

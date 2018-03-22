@@ -21,15 +21,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import java.io.Serializable;
+
 import sk.rain.men.abc.tracking.AntecedentFragment;
 import sk.rain.men.abc.tracking.BehaviorFragment;
+import sk.rain.men.abc.tracking.ChildrenActivity;
 import sk.rain.men.abc.tracking.ConsequenceFragment;
+import sk.rain.men.abc.tracking.MessageKey;
 import sk.rain.men.abc.tracking.R;
 
 /**
  * Provides the appropriate {@link Fragment} for a view pager.
  */
-public class SimpleAbcFormFragmentPagerAdapter extends FragmentStatePagerAdapter {
+public class SimpleAbcFormFragmentPagerAdapter extends FragmentStatePagerAdapter implements Serializable {
 
     private Context context;
     private Long childId;
@@ -51,7 +55,8 @@ public class SimpleAbcFormFragmentPagerAdapter extends FragmentStatePagerAdapter
             f = new ConsequenceChildFragment();
         }
         Bundle b = new Bundle();
-        b.putLong(AbcChildDataTabActivity.CHILD_ID_KEY, childId);
+        b.putLong(MessageKey.CHILD_ID_KEY, childId);
+        b.putSerializable(MessageKey.ABC_FORM_PAGE_ADAPTER, this);
         f.setArguments(b);
 
         return f;

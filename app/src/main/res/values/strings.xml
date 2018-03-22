@@ -28,4 +28,10 @@
     <string name="antecedent_tab_title">Antecedent</string>
     <string name="behavior_tab_title">Behavior</string>
     <string name="consequence_tab_title">Consequence</string>
+
+    <!-- Child main activity -->
+    <string name="child_main_open_config_button">Assign ABC Data</string>
+    <string name="child_main_open_abc_button">ABC form</string>
+    <string name="child_main_open_behavior_button">Collect behavior data</string>
+
 </resources>

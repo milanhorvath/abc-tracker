@@ -14,8 +14,6 @@ import sk.rain.men.abc.tracking.model.AbcType;
 
 public class AbcMasterDataTabActivity extends FragmentActivity {
 
-    public static final String TYPE_KEY = "typeKey";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +31,7 @@ public class AbcMasterDataTabActivity extends FragmentActivity {
 
         // Give the TabLayout the ViewPager
         TabLayout tabLayout = findViewById(R.id.abc_data_tabs);
-        AbcType type = (AbcType) getIntent().getSerializableExtra(TYPE_KEY);
+        AbcType type = (AbcType) getIntent().getSerializableExtra(MessageKey.ABC_MD_TYPE_KEY);
         if (type != null) {
             switch (type) {
                 case Antecedent:
@@ -52,19 +50,19 @@ public class AbcMasterDataTabActivity extends FragmentActivity {
 
     public void createAntecedent(View view) {
         Intent intent = new Intent(this, AbcMasterDataActivity.class);
-        intent.putExtra(AbcMasterDataActivity.ABC_MD_TYPE_MSG, AbcType.Antecedent);
+        intent.putExtra(MessageKey.ABC_MD_TYPE_KEY, AbcType.Antecedent);
         startActivity(intent);
     }
 
     public void createBehavior(View view) {
         Intent intent = new Intent(this, AbcMasterDataActivity.class);
-        intent.putExtra(AbcMasterDataActivity.ABC_MD_TYPE_MSG, AbcType.Behavior);
+        intent.putExtra(MessageKey.ABC_MD_TYPE_KEY, AbcType.Behavior);
         startActivity(intent);
     }
 
     public void createConsequence(View view) {
         Intent intent = new Intent(this, AbcMasterDataActivity.class);
-        intent.putExtra(AbcMasterDataActivity.ABC_MD_TYPE_MSG, AbcType.Consequence);
+        intent.putExtra(MessageKey.ABC_MD_TYPE_KEY, AbcType.Consequence);
         startActivity(intent);
     }
 

@@ -23,7 +23,7 @@ public class ChildActivity extends AppCompatActivity {
         setContentView(R.layout.activity_child);
 
         Button deleteChildButtton = findViewById(R.id.delete_child_button);
-        Long childId = getIntent().getLongExtra(ChildrenActivity.CHILD_MESSAGE, -1);
+        Long childId = getIntent().getLongExtra(MessageKey.CHILD_ID_KEY, -1);
         if (childId != -1) {
             child = Child.findById(Child.class, childId);
             deleteChildButtton.setText(R.string.delete_child_button);

@@ -14,9 +14,6 @@ import sk.rain.men.abc.tracking.model.AbcType;
 
 public class AbcMasterDataActivity extends AppCompatActivity {
 
-    public static final String ABC_MD_ID_MSG = "sk.abc.MD.id";
-    public static final String ABC_MD_TYPE_MSG = "sk.abc.MD.type";
-
     private AbcMasterData abcData;
     private AbcType newType;
 
@@ -26,8 +23,8 @@ public class AbcMasterDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_abc_master_data);
 
         Button deleteAbcDataButton = findViewById(R.id.delete_abcMdData_button);
-        Long abcMdId = getIntent().getLongExtra(ABC_MD_ID_MSG, -1);
-        newType = (AbcType) getIntent().getSerializableExtra(ABC_MD_TYPE_MSG);
+        Long abcMdId = getIntent().getLongExtra(MessageKey.ABC_MD_ID_KEY, -1);
+        newType = (AbcType) getIntent().getSerializableExtra(MessageKey.ABC_MD_TYPE_KEY);
         
         TextView typeText = findViewById(R.id.abcMdTypeText);
         if (abcMdId != -1) {

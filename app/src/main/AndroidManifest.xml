@@ -59,8 +59,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".child.AbcChildDataTabActivity">
-
+        <activity android:name=".child.AbcChildDataTabActivity"
+            android:parentActivityName=".child.ChildMainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".child.ChildMainActivity" />
+        </activity>
+        <activity android:name=".child.ChildMainActivity"
+            android:parentActivityName=".ChildrenActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChildrenActivity" />
         </activity>
     </application>
 

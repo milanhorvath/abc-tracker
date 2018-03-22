@@ -10,10 +10,10 @@ import java.util.Date;
 
 public class AbcFormData extends SugarRecord {
 
-    private int childId;
-    private int aId;
-    private int bId;
-    private int cId;
+    private Long childId;
+    private Long aId;
+    private Long bId;
+    private Long cId;
     private Date creationDate;
     private String comment;
 
@@ -21,7 +21,7 @@ public class AbcFormData extends SugarRecord {
 
     }
 
-    public AbcFormData(int childId, int aId, int bId, int cId, Date creationDate, String comment) {
+    public AbcFormData(Long childId, Long aId, Long bId, Long cId, Date creationDate, String comment) {
         this.childId = childId;
         this.aId = aId;
         this.bId = bId;
@@ -30,35 +30,35 @@ public class AbcFormData extends SugarRecord {
         this.comment = comment;
     }
 
-    public int getChildId() {
+    public Long getChildId() {
         return childId;
     }
 
-    public void setChildId(int childId) {
+    public void setChildId(Long childId) {
         this.childId = childId;
     }
 
-    public int getaId() {
+    public Long getaId() {
         return aId;
     }
 
-    public void setaId(int aId) {
+    public void setaId(Long aId) {
         this.aId = aId;
     }
 
-    public int getbId() {
+    public Long getbId() {
         return bId;
     }
 
-    public void setbId(int bId) {
+    public void setbId(Long bId) {
         this.bId = bId;
     }
 
-    public int getcId() {
+    public Long getcId() {
         return cId;
     }
 
-    public void setcId(int cId) {
+    public void setcId(Long cId) {
         this.cId = cId;
     }
 

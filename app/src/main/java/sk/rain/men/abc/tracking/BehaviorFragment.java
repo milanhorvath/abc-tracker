@@ -36,7 +36,7 @@ public class BehaviorFragment extends Fragment implements AdapterView.OnItemClic
         View rootView = inflater.inflate(R.layout.fragment_behavior, container, false);
 
         Cursor cursor = Select.from(AbcMasterData.class).where("type == '" + AbcType.Behavior.name() + "'").getCursor();
-        cursorAdapter = new AbcMasterDataCursorAdapter(getActivity(), cursor);
+        cursorAdapter = new AbcMasterDataCursorAdapter(getActivity(), cursor, null, AbcType.Behavior);
 
         ListView dataListView = rootView.findViewById(R.id.behaviorListView);
         dataListView.setAdapter(cursorAdapter);
@@ -51,13 +51,13 @@ public class BehaviorFragment extends Fragment implements AdapterView.OnItemClic
         SugarCursor cursor = (SugarCursor) adapterView.getItemAtPosition(i);
         Long abcMasterDataId = cursor.getLong(cursor.getColumnIndex("ID"));
         Intent intent = new Intent(getActivity(), AbcMasterDataActivity.class);
-        intent.putExtra(AbcMasterDataActivity.ABC_MD_ID_MSG, abcMasterDataId);
+        intent.putExtra(MessageKey.ABC_MD_ID_KEY, abcMasterDataId);
         startActivity(intent);
     }
 
     @Override
     public void onResume() {
-        Cursor cursor = Select.from(AbcMasterData.class).where("type == '" + AbcType.Antecedent.name() + "'").getCursor();
+        Cursor cursor = Select.from(AbcMasterData.class).where("type == '" + AbcType.Behavior.name() + "'").getCursor();
         if (cursorAdapter != null) {
             cursorAdapter.changeCursor(cursor);
         }

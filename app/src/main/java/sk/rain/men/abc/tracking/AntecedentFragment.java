@@ -36,7 +36,7 @@ public class AntecedentFragment extends Fragment implements AdapterView.OnItemCl
         View rootView = inflater.inflate(R.layout.fragment_antecedent, container, false);
 
         Cursor cursor = Select.from(AbcMasterData.class).where("type == '" + AbcType.Antecedent.name() + "'").getCursor();
-        cursorAdapter = new AbcMasterDataCursorAdapter(getActivity(), cursor);
+        cursorAdapter = new AbcMasterDataCursorAdapter(getActivity(), cursor, null, AbcType.Antecedent);
 
         ListView dataListView = rootView.findViewById(R.id.antecedentListView);
         dataListView.setAdapter(cursorAdapter);
@@ -50,7 +50,7 @@ public class AntecedentFragment extends Fragment implements AdapterView.OnItemCl
         SugarCursor cursor = (SugarCursor) adapterView.getItemAtPosition(i);
         Long abcMasterDataId = cursor.getLong(cursor.getColumnIndex("ID"));
         Intent intent = new Intent(getActivity(), AbcMasterDataActivity.class);
-        intent.putExtra(AbcMasterDataActivity.ABC_MD_ID_MSG, abcMasterDataId);
+        intent.putExtra(MessageKey.ABC_MD_ID_KEY, abcMasterDataId);
         startActivity(intent);
     }
 

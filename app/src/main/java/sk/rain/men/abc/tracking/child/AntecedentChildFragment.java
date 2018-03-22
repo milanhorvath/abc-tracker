@@ -4,6 +4,8 @@ package sk.rain.men.abc.tracking.child;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,16 +19,23 @@ import com.orm.util.SugarCursor;
 import java.util.List;
 
 import sk.rain.men.abc.tracking.AbcMasterDataActivity;
+import sk.rain.men.abc.tracking.ChildrenActivity;
+import sk.rain.men.abc.tracking.MessageKey;
 import sk.rain.men.abc.tracking.R;
 import sk.rain.men.abc.tracking.adapter.AbcMasterDataCursorAdapter;
+import sk.rain.men.abc.tracking.listener.AbcClickerManager;
+import sk.rain.men.abc.tracking.listener.AbcFormClickListener;
 import sk.rain.men.abc.tracking.model.AbcForm;
 import sk.rain.men.abc.tracking.model.AbcMasterData;
 import sk.rain.men.abc.tracking.model.AbcType;
 
 
-public class AntecedentChildFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class AntecedentChildFragment extends Fragment implements AbcChildFragment {
 
     private Long childId;
+    private AbcMasterDataCursorAdapter cursorAdapter;
+    private ListView dataListView;
+    private FloatingActionButton saveButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,31 +48,81 @@ public class AntecedentChildFragment extends Fragment implements AdapterView.OnI
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_antecedent, container, false);
 
-        childId = getArguments().getLong(AbcChildDataTabActivity.CHILD_ID_KEY);
+        childId = getArguments().getLong(MessageKey.CHILD_ID_KEY);
+
+        cursorAdapter = new AbcMasterDataCursorAdapter(getActivity(), createCursor(), Boolean.FALSE, AbcType.Antecedent);
+
+        dataListView = rootView.findViewById(R.id.antecedentListView);
+        dataListView.setAdapter(cursorAdapter);
+        AbcFormClickListener clickListener = AbcClickerManager.getInstance().getaFormListener();
+        clickListener.registerFragment(this);
+        dataListView.setOnItemClickListener(clickListener);
+
+        FloatingActionButton addButton = rootView.findViewById(R.id.add_antecedent_button);
+        addButton.setVisibility(View.GONE);
+
+        saveButton = rootView.findViewById(R.id.save_antecedent_abc_form_button);
+        saveButton.setVisibility(View.VISIBLE);
+        saveButton.setEnabled(false);
+
+        return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        if (cursorAdapter != null) {
+            cursorAdapter.changeCursor(createCursor());
+        }
+
+        super.onResume();
+    }
+
+    private Cursor createCursor() {
         List<AbcForm> abcForm = AbcForm.find(AbcForm.class, "child_id = " + childId);
         StringBuilder sb = new StringBuilder();
         for (AbcForm aForm : abcForm) {
             sb.append(aForm.getAbcId());
             sb.append(",");
         }
+        if (sb.toString().isEmpty()) {
+            sb.append("-1,");
+        }
 
-        Cursor cursor = Select.from(AbcMasterData.class).where("type == '" + AbcType.Antecedent.name() + "' AND id IN (" + sb.substring(0, sb.length() - 1)  + ")").getCursor();
-        AbcMasterDataCursorAdapter cursorAdapter = new AbcMasterDataCursorAdapter(getActivity(), cursor);
+        String whereClause = "type == '" + AbcType.Antecedent.name() + "'";
+        if (abcForm != null && abcForm.size() > 0) {
+            whereClause += " AND id IN (" + sb.substring(0, sb.length() - 1)  + ")";
+        }
 
-        ListView dataListView = rootView.findViewById(R.id.antecedentListView);
-        dataListView.setAdapter(cursorAdapter);
-        dataListView.setOnItemClickListener(this);
-
-        return rootView;
+        return Select.from(AbcMasterData.class).where(whereClause).getCursor();
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        SugarCursor cursor = (SugarCursor) adapterView.getItemAtPosition(i);
+    public Long setSelectedIndex(int selectedIndex) {
+        SugarCursor cursor = (SugarCursor) dataListView.getItemAtPosition(selectedIndex);
         Long abcMasterDataId = cursor.getLong(cursor.getColumnIndex("ID"));
-        Intent intent = new Intent(getActivity(), AbcMasterDataActivity.class);
-        intent.putExtra(AbcMasterDataActivity.ABC_MD_ID_MSG, abcMasterDataId);
-        startActivity(intent);
+
+
+        TabLayout tabLayout = getActivity().findViewById(R.id.abc_form_tabs);
+        tabLayout.getTabAt(1).select();
+
+        return abcMasterDataId;
     }
 
+    /**
+     * Enable the save button.
+     */
+    public void enableSaveButton() {
+        saveButton.setEnabled(true);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AbcClickerManager.getInstance().saveForm(childId, getActivity());
+            }
+        });
+    }
+
+    public void disableSaveButton() {
+        saveButton.setEnabled(false);
+        saveButton.setOnClickListener(null);
+    }
 }
