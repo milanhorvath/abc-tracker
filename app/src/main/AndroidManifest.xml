@@ -35,41 +35,54 @@
         </activity>
         <activity
             android:name=".ChildrenActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:label="@string/children_list_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".ChildActivity"
-            android:parentActivityName=".ChildrenActivity">
+            android:parentActivityName=".ChildrenActivity"
+            android:label="ChildActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChildrenActivity" />
         </activity>
         <activity android:name=".AbcMasterDataActivity"
-            android:parentActivityName=".AbcMasterDataTabActivity">
+            android:parentActivityName=".AbcMasterDataTabActivity"
+            android:label="@string/abcMaster_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".AbcMasterDataTabActivity" />
         </activity>
         <activity android:name=".AbcMasterDataTabActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:label="MasterDataTabActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".child.AbcChildDataTabActivity"
-            android:parentActivityName=".child.ChildMainActivity">
+            android:parentActivityName=".child.ChildMainActivity"
+            android:label="AbcChildDataTabActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".child.ChildMainActivity" />
         </activity>
         <activity android:name=".child.ChildMainActivity"
-            android:parentActivityName=".ChildrenActivity">
+            android:parentActivityName=".ChildrenActivity"
+            android:label="@string/child_main_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ChildrenActivity" />
+        </activity>
+        <activity android:name=".child.BehaviorActivity"
+            android:parentActivityName=".child.ChildMainActivity"
+            android:label="BehaviorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".child.ChildMainActivity" />
         </activity>
     </application>
 

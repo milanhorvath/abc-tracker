@@ -10,18 +10,18 @@ import java.util.Date;
 
 public class BehaviorFormData extends SugarRecord {
 
-    private int childId;
-    private int behaviorId;
+    private Long childId;
+    private Long behaviorId;
     private Date startDate;
     private Date endDate;
     // In seconds
-    private float duration;
+    private int duration;
 
     public BehaviorFormData() {
 
     }
 
-    public BehaviorFormData(int childId, int behaviorId, Date startDate, Date endDate, float duration) {
+    public BehaviorFormData(Long childId, Long behaviorId, Date startDate, Date endDate, int duration) {
         this.childId = childId;
         this.behaviorId = behaviorId;
         this.startDate = startDate;
@@ -29,19 +29,19 @@ public class BehaviorFormData extends SugarRecord {
         this.duration = duration;
     }
 
-    public int getChildId() {
+    public Long getChildId() {
         return childId;
     }
 
-    public void setChildId(int childId) {
+    public void setChildId(Long childId) {
         this.childId = childId;
     }
 
-    public int getBehaviorId() {
+    public Long getBehaviorId() {
         return behaviorId;
     }
 
-    public void setBehaviorId(int behaviorId) {
+    public void setBehaviorId(Long behaviorId) {
         this.behaviorId = behaviorId;
     }
 
@@ -61,11 +61,11 @@ public class BehaviorFormData extends SugarRecord {
         this.endDate = endDate;
     }
 
-    public float getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(float duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 }

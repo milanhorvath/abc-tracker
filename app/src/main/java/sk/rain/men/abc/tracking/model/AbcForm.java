@@ -9,31 +9,31 @@ import com.orm.dsl.MultiUnique;
 @MultiUnique("childId,abcId")
 public class AbcForm extends SugarRecord {
 
-    private long childId;
-    private long abcId;
+    private Long childId;
+    private Long abcId;
 
     public AbcForm() {
 
     }
 
-    public AbcForm(long childId, long abcId) {
+    public AbcForm(Long childId, Long abcId) {
         this.childId = childId;
         this.abcId = abcId;
     }
 
-    public long getChildId() {
+    public Long getChildId() {
         return childId;
     }
 
-    public void setChildId(long childId) {
+    public void setChildId(Long childId) {
         this.childId = childId;
     }
 
-    public long getAbcId() {
+    public Long getAbcId() {
         return abcId;
     }
 
-    public void setAbcId(long abcId) {
+    public void setAbcId(Long abcId) {
         this.abcId = abcId;
     }
 }

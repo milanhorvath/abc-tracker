@@ -7,25 +7,105 @@
     android:orientation="vertical"
     tools:context="sk.rain.men.abc.tracking.child.ChildMainActivity">
 
-    <Button
-        android:text="@string/child_main_open_config_button"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:onClick="openABCFormConfig"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_text"
+                android:paddingRight="5px"/>
+            <TextView
+                android:id="@+id/child_main_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_text"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Abc-data count"
+                android:paddingRight="5px"/>
+            <TextView
+                android:id="@+id/child_main_abc_count_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_text"
+                android:paddingRight="10px"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Behavior count"
+                android:paddingRight="5px"/>
+            <TextView
+                android:id="@+id/child_main_behavior_count_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_text"/>
+        </LinearLayout>
+    </LinearLayout>
 
-    <Button
-        android:text="@string/child_main_open_abc_button"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:onClick="openABCForm"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <Button
-        android:text="@string/child_main_open_behavior_button"
+        <Button
+            android:text="@string/child_main_open_abc_config_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="openABCFormConfig"/>
+
+        <Button
+            android:text="@string/child_main_open_abc_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="openABCForm"/>
+
+        <Button
+            android:text="@string/child_main_open_abc_data_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="openABCFormData"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:onClick="openBehaviorForm"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:text="@string/child_main_open_behavior_config_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="openBehaviorFormConfig"/>
+
+        <Button
+            android:text="@string/child_main_open_behavior_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="openBehaviorForm"/>
+
+        <Button
+            android:text="@string/child_main_open_behavior_data_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="openBehaviorFormData"/>
+    </LinearLayout>
 
 </LinearLayout>

@@ -15,6 +15,7 @@
     <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- ABC master data activity -->
+    <string name="abcMaster_title">Add/Update ABC data</string>
     <string name="abcMdName_text">Name</string>
     <string name="abcMdDesc_text">Description</string>
     <string name="abcMdType_text">Type</string>
@@ -29,9 +30,14 @@
     <string name="behavior_tab_title">Behavior</string>
     <string name="consequence_tab_title">Consequence</string>
 
+    <string name="children_list_title">Children list</string>
     <!-- Child main activity -->
-    <string name="child_main_open_config_button">Assign ABC Data</string>
+    <string name="child_main_title">Child detail</string>
+    <string name="child_main_open_abc_config_button">Configure ABC form</string>
     <string name="child_main_open_abc_button">ABC form</string>
+    <string name="child_main_open_abc_data_button">ABC Data history</string>
+    <string name="child_main_open_behavior_config_button">Configure behavior form</string>
     <string name="child_main_open_behavior_button">Collect behavior data</string>
+    <string name="child_main_open_behavior_data_button">Behavior data history</string>
 
 </resources>

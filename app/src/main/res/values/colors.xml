@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="childOdd">#C5CAE9</color>
     <color name="childEven">#B2DFDB</color>
+    <color name="activeBehavior">#F44336</color>
+    <color name="notActiveBehavior">#FFCDD2</color>
 </resources>

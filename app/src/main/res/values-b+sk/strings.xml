@@ -1,4 +1,6 @@
 <resources>
+
+
     <string name="app_name">ABC-Tracking</string>
     <string name="name_text">Meno</string>
     <string name="surname_text">Priezvisko</string>
@@ -12,6 +14,7 @@
     <string name="open_abcdata_button">ABC dáta</string>
 
     <!-- ABC master data activity -->
+    <string name="abcMaster_title">Pridaj/Uprav abc dáta</string>
     <string name="abcMdName_text">Názov</string>
     <string name="abcMdDesc_text">Popis</string>
     <string name="abcMdType_text">Typ</string>
@@ -26,9 +29,14 @@
     <string name="behavior_tab_title">Správanie</string>
     <string name="consequence_tab_title">Dôsledok</string>
 
+    <string name="children_list_title">Lista detí</string>
     <!-- Child main activity -->
-    <string name="child_main_open_config_button">Konfiguruj ABC formulár</string>
+    <string name="child_main_title">Dieťa detail</string>
+    <string name="child_main_open_abc_config_button">Konfiguruj ABC formulár</string>
     <string name="child_main_open_abc_button">ABC formulár</string>
+    <string name="child_main_open_abc_data_button">História ABC dát</string>
+    <string name="child_main_open_behavior_config_button">Konfiguruj formulár správania</string>
     <string name="child_main_open_behavior_button">Zbieraj dáta o správaní</string>
+    <string name="child_main_open_behavior_data_button">História dát o správaní</string>
 
 </resources>
